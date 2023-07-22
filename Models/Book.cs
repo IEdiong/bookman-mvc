@@ -16,7 +16,7 @@ namespace Bookman.Models
 
 		public int Year { get; set; }
 
-		public decimal Price { get; set; }
+		public double Price { get; set; }
 
 		public Book(string name)
 		{
