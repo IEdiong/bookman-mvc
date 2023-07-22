@@ -1,26 +1,31 @@
 ﻿using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
 using Bookman.Models;
+using Bookman.Data;
 
 namespace Bookman.Controllers;
 
 public class HomeController : Controller
 {
     private readonly ILogger<HomeController> _logger;
+    private readonly ApplicationDbContext _context;
 
-    public HomeController(ILogger<HomeController> logger)
+    public HomeController(ILogger<HomeController> logger, ApplicationDbContext context)
     {
         _logger = logger;
+        _context = context;
     }
 
     public IActionResult Index()
     {
-        return View();
+        var books = _context.Books.ToList();
+        return View(books);
     }
 
     public IActionResult Details(int bookId)
     {
-        return View();
+        var book = _context.Books.FirstOrDefault(b => b.Id == bookId);
+        return View(book);
     }
 
     public IActionResult Privacy()
