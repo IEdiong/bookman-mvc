@@ -1,30 +1,29 @@
 ﻿using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
 using Bookman.Models;
-using Bookman.Data;
 
 namespace Bookman.Controllers;
 
 public class HomeController : Controller
 {
     private readonly ILogger<HomeController> _logger;
-    private readonly ApplicationDbContext _context;
+    private readonly IBookRepository _bookRepository;
 
-    public HomeController(ILogger<HomeController> logger, ApplicationDbContext context)
+    public HomeController(ILogger<HomeController> logger, IBookRepository bookRepository)
     {
         _logger = logger;
-        _context = context;
+        _bookRepository = bookRepository;
     }
 
     public IActionResult Index()
     {
-        var books = _context.Books.ToList();
+        var books = _bookRepository.AllBooks;
         return View(books);
     }
 
     public IActionResult Details(int bookId)
     {
-        var book = _context.Books.FirstOrDefault(b => b.Id == bookId);
+        var book = _bookRepository.GetBookById(bookId);
         return View(book);
     }
 
