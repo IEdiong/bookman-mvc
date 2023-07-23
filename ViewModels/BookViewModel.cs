@@ -14,6 +14,7 @@ namespace Bookman.ViewModels
         public string Author { get; set; } = null!;
 
         [Required(ErrorMessage = "Year is required")]
+        [Range(1990, 2023, ErrorMessage = "Year must be between 1990 to 2023")]
         public int Year { get; set; }
 
         [Required(ErrorMessage = "Price is required")]

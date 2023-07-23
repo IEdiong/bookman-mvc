@@ -37,7 +37,7 @@ namespace Bookman.Controllers
                     Description = book.Description
                 };
                 _bookRepository.CreateBook(newBook);
-                return RedirectToPage("Home");
+                return RedirectToAction("Index", "Home");
             }
             else
             {
