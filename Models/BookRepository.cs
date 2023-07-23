@@ -18,6 +18,12 @@ namespace Bookman.Models
         }
 
         public Book? GetBookById(int bookId) => _context.Books.FirstOrDefault(b => b.Id == bookId);
+
+        public void CreateBook(Book book)
+        {
+            _context.Add(book);
+            _context.SaveChanges();
+        }
     }
 }
 

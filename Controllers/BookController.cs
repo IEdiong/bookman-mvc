@@ -25,9 +25,24 @@ namespace Bookman.Controllers
 
         // POST: /<controller>/
         [HttpPost]
-        public IActionResult Create(BookViewModel model)
+        public IActionResult Create(BookViewModel book)
         {
-            return View();
+            if (ModelState.IsValid)
+            {
+                var newBook = new Book(book.Name)
+                {
+                    Author = book.Author,
+                    Year = book.Year,
+                    Price = book.Price,
+                    Description = book.Description
+                };
+                _bookRepository.CreateBook(newBook);
+                return RedirectToPage("Home");
+            }
+            else
+            {
+                return View();
+            }
         }
     }
 }
