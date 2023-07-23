@@ -1,4 +1,4 @@
-﻿namespace Bookman.Models;
+﻿namespace Bookman.ViewModels;
 
 public class ErrorViewModel
 {
