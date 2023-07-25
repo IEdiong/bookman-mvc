@@ -35,6 +35,22 @@ namespace Bookman.Models
             searchString = searchString.Trim();
             return _context.Books.Where(b => b.Name.Contains(searchString)).ToList();
         }
+
+        public IEnumerable<Book> FilterBooksBy(string filter)
+        {
+            if (filter.ToLower() == "name")
+            {
+                return _context.Books.OrderBy(b => b.Name).ToList();
+            }
+            else if (filter.ToLower() == "price")
+            {
+                return _context.Books.OrderBy(b => b.Price).ToList();
+            }
+            else
+            {
+                return _context.Books.OrderBy(b => b.Date).ToList();
+            }
+        }
     }
 }
 

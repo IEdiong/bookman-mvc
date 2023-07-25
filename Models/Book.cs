@@ -17,6 +17,8 @@ namespace Bookman.Models
 
 		public double Price { get; set; }
 
+		public DateTime Date { get; set; }
+
 		public Book(string name)
 		{
 			Name = name;

@@ -35,6 +35,13 @@ public class HomeController : Controller
         return View("Index", books);
     }
 
+    [HttpGet]
+    public IActionResult Filter(string filter)
+    {
+        var books = _bookRepository.FilterBooksBy(filter);
+        return View("Index", books);
+    }
+
     public IActionResult Privacy()
     {
         return View();

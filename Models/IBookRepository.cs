@@ -6,5 +6,6 @@
 		Book? GetBookById(int bookId);
 		void CreateBook(Book book);
 		IEnumerable<Book> GetBooks(string? searchString);
+		IEnumerable<Book> FilterBooksBy(string filter);
 	}
 }

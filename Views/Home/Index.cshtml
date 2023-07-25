@@ -14,12 +14,13 @@
     </form>
     <div class="col-sm-12 col-md-3 px-0 d-flex align-items-center mt-3 mt-md-0">
         <span class="flex-shrink-0 me-3">Sort by:</span>
-        <select class="form-select" aria-label="Default select example">
-            <option selected>Lastest</option>
-            <option value="1">Name</option>
-            <option value="2">Two</option>
-            <option value="3">Three</option>
-        </select>
+        <form id="filter-form" asp-action="Filter" method="get">
+            <select id="filter-select" class="form-select" aria-label="Default select example">
+                <option selected value="lastest">Lastest</option>
+                <option value="name">Name</option>
+                <option value="price">Price</option>
+            </select>
+        </form>
     </div>
 </div>
 
@@ -40,3 +41,13 @@
         </div>
     }
 </div>
+
+@section Scripts{
+    <script defer type="text/javascript">
+        const filter = document.getElementById('filter-select');
+        const form = document.getElementById('filter-form');
+        filter.addEventListener("change", function () {
+            form.submit();
+        })
+    </script>
+}
