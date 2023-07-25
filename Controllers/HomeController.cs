@@ -28,6 +28,13 @@ public class HomeController : Controller
         return View(book);
     }
 
+    [HttpGet]
+    public IActionResult Search(string searchString)
+    {
+        var books = _bookRepository.GetBooks(searchString);
+        return View("Index", books);
+    }
+
     public IActionResult Privacy()
     {
         return View();

@@ -24,6 +24,17 @@ namespace Bookman.Models
             _context.Add(book);
             _context.SaveChanges();
         }
+
+        public IEnumerable<Book> GetBooks(string? searchString)
+        {
+            if (string.IsNullOrEmpty(searchString))
+            {
+                return _context.Books.ToList();
+            }
+
+            searchString = searchString.Trim();
+            return _context.Books.Where(b => b.Name.Contains(searchString)).ToList();
+        }
     }
 }
 
