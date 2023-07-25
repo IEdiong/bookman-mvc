@@ -13,7 +13,7 @@ namespace Bookman.Models
         {
             get
             {
-                return _context.Books.ToList();
+                return _context.Books.OrderBy(b => b.Date).ToList();
             }
         }
 
@@ -29,11 +29,13 @@ namespace Bookman.Models
         {
             if (string.IsNullOrEmpty(searchString))
             {
-                return _context.Books.ToList();
+                return _context.Books.OrderBy(b => b.Date).ToList();
             }
 
             searchString = searchString.Trim();
-            return _context.Books.Where(b => b.Name.Contains(searchString)).ToList();
+            return _context.Books.Where(b => b.Name
+                    .Contains(searchString))
+                    .OrderBy(b => b.Date).ToList();
         }
 
         public IEnumerable<Book> FilterBooksBy(string filter)
