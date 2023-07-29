@@ -19,6 +19,8 @@ namespace Bookman.Models
 
 		public DateTime Date { get; set; }
 
+		public string? FileName { get; set; }
+
 		public Book(string name)
 		{
 			Name = name;
