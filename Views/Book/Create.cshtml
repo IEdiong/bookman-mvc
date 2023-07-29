@@ -6,7 +6,7 @@
 
 <div class="mt-5">
     <h1>Add a new book</h1>
-    <form asp-controller="Book" asp-action="Create" method="Post" role="form">
+    <form asp-controller="Book" asp-action="Create" method="Post" role="form" enctype="multipart/form-data">
 
         <div class="mb-3 col-md-6">
             <label asp-for="@Model.Name" class="form-label"></label>
@@ -36,6 +36,11 @@
             <label asp-for="@Model.Description" class="form-label"></label>
             <textarea asp-for="@Model.Description" class="form-control" rows="3"></textarea>
             <span asp-validation-for="@Model.Description" class="text-danger"></span>
+        </div>
+
+        <div class="mb-3 col-md-6">
+            <label for="formFile" class="form-label">Image of the book</label>
+            <input asp-for="@Model.ImageFile" class="form-control" type="file" id="formFile">
         </div>
 
         <button class="btn btn-primary" type="submit">Add Book</button>

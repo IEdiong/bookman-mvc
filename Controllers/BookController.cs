@@ -2,6 +2,7 @@
 using System.Linq;
 using System.Threading.Tasks;
 using Bookman.Models;
+using Bookman.Services;
 using Bookman.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 
@@ -10,10 +11,13 @@ namespace Bookman.Controllers
     public class BookController : Controller
     {
         private readonly IBookRepository _bookRepository;
+        private readonly IWebHostEnvironment _hostEnvironment;
 
-        public BookController(IBookRepository bookRepository)
+
+        public BookController(IBookRepository bookRepository, IWebHostEnvironment hostEnvironment)
         {
             _bookRepository = bookRepository;
+            _hostEnvironment = hostEnvironment;
         }
 
         // GET: /<controller>/
@@ -25,16 +29,25 @@ namespace Bookman.Controllers
 
         // POST: /<controller>/
         [HttpPost]
-        public IActionResult Create(BookViewModel book)
+        public IActionResult Create(BookViewModel model)
         {
             if (ModelState.IsValid)
             {
-                var newBook = new Book(book.Name)
+                string fileName = UtilsService.GetUniqueFileName(model.ImageFile.FileName);
+                string imagePath = Path.Combine(_hostEnvironment.WebRootPath, "imgs", fileName);
+
+                using (var stream = new FileStream(imagePath, FileMode.Create))
                 {
-                    Author = book.Author,
-                    Year = book.Year,
-                    Price = book.Price,
-                    Description = book.Description
+                    model.ImageFile.CopyTo(stream);
+                }
+
+                var newBook = new Book(model.Name)
+                {
+                    Author = model.Author,
+                    Year = model.Year,
+                    Price = model.Price,
+                    Description = model.Description,
+                    FileName = fileName
                 };
                 _bookRepository.CreateBook(newBook);
                 return RedirectToAction("Index", "Home");

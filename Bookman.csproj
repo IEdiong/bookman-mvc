@@ -10,6 +10,7 @@
   <ItemGroup>
     <None Remove="ViewModels\" />
     <None Remove="Views\Book\" />
+    <None Remove="Services\" />
   </ItemGroup>
   <ItemGroup>
     <None Update="app.db" CopyToOutputDirectory="PreserveNewest" ExcludeFromSingleFile="true" />
@@ -31,5 +32,10 @@
   <ItemGroup>
     <Folder Include="ViewModels\" />
     <Folder Include="Views\Book\" />
+    <Folder Include="wwwroot\imgs\" />
+    <Folder Include="Services\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Remove="wwwroot\imgs\" />
   </ItemGroup>
 </Project>

@@ -1,12 +1,26 @@
 ﻿@model Book
 
 @{
-   ViewData["Title"] = "Book Detial";
+    ViewData["Title"] = "Book Detial";
+}
+
+@functions {
+    public string GetImageUrl(string fileName)
+    {
+        if (string.IsNullOrEmpty(fileName))
+        {
+            return "https://placehold.co/600x400";
+        }
+        else
+        {
+            return Url.Content("~/imgs/" + fileName);
+        }
+    }
 }
 
 <div class="row align-items-center mt-5">
     <div class="col-md-6">
-        <img src="https://placehold.co/600x400" class="card-img-top" alt="placeholder image">
+        <img src="@GetImageUrl(Model.FileName!)" class="card-img-top" alt="placeholder image">
     </div>
     <div class="col-md-6 d-flex flex-column align-items-start">
         <h1>@Model.Name</h1>
