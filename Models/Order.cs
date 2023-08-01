@@ -5,7 +5,17 @@ namespace Bookman.Models
 {
 	public class Order
 	{
-		[Key]
+        public Order()
+        {
+        }
+
+        public Order(Book book, string userId)
+        {
+            Book = book;
+            UserId = userId;
+        }
+
+        [Key]
 		public int Id { get; set; }
 
 		public DateTime Date { get; set; }
@@ -17,12 +27,6 @@ namespace Bookman.Models
 		public string UserId { get; set; }
 
 		public double Price { get; set; }
-
-        public Order(Book book, string userId)
-        {
-			Book = book;
-			UserId = userId;
-        }
 
     }
 
