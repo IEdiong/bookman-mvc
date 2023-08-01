@@ -1,6 +1,4 @@
-﻿using System;
-using System.ComponentModel.DataAnnotations;
-using System.Net;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace Bookman.Models
 {
@@ -30,7 +28,9 @@ namespace Bookman.Models
 
 		public int BookId { get; set; }
 
-		public string UserId { get; set; }
+        public Book Book { get; set; } = null!;
+
+        public string UserId { get; set; }
 
 		public double Price { get; set; }
 

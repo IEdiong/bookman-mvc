@@ -30,7 +30,9 @@ namespace Bookman.Controllers
         [HttpGet]
         public IActionResult Index()
         {
-            return View();
+            var userId = _userManager.GetUserId(User);
+            var orders = _orderRepository.GetUserOrders(userId);
+            return View(orders);
         }
 
         // GET: /<controller>/Create
