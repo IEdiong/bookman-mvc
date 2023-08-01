@@ -7,6 +7,7 @@ namespace Bookman.Data;
 public class ApplicationDbContext : IdentityDbContext
 {
     public DbSet<Book> Books { get; set; } = null!;
+    public DbSet<Order> Orders { get; set; } = null!;
 
     public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
         : base(options)
