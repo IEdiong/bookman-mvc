@@ -1,7 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Bookman.Models;
+﻿using Bookman.Models;
 using Bookman.Services;
 using Bookman.ViewModels;
 using Microsoft.AspNetCore.Mvc;

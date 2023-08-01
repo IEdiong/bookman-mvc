@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-using System.Threading.Tasks;
-using Bookman.Models;
+﻿using Bookman.Models;
 using Bookman.ViewModels;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
@@ -54,7 +49,7 @@ namespace Bookman.Controllers
                 }
                 else
                 {
-                    var order = new Order(book, user.Id, model.Address, model.Email, model.PhoneNumber)
+                    var order = new Order(user.Id, model.Address, model.Email, model.PhoneNumber)
                     {
                         BookId = model.BookId,
                         Date = DateTime.Now,

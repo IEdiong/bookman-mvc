@@ -1,5 +1,6 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
+using System.Net;
 
 namespace Bookman.Models
 {
@@ -7,12 +8,15 @@ namespace Bookman.Models
 	{
         public Order()
         {
+            UserId = string.Empty;
+            Address = string.Empty;
+            Email = string.Empty;
+            PhoneNumber = string.Empty;
         }
 
-        public Order(Book book, string userId, string address
+        public Order(string userId, string address
             , string email, string phoneNumber)
         {
-            Book = book;
             UserId = userId;
             Address = address;
             Email = email;
@@ -26,8 +30,6 @@ namespace Bookman.Models
 
 		public int BookId { get; set; }
 
-        public Book Book { get; set; }
-
 		public string UserId { get; set; }
 
 		public double Price { get; set; }
@@ -39,7 +41,4 @@ namespace Bookman.Models
         public string Email { get; set; }
 
     }
-
-    
 }
-
