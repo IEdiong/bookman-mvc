@@ -25,7 +25,7 @@ public class ApplicationDbContext : IdentityDbContext
                 Description = "This book covers the basics of C#.",
                 Price = 5000,
                 Year = 2021,
-                Date = DateTime.Now
+                Date = DateTime.Now.AddDays(-200)
             },
             new Book("Fuji Music")
             {
