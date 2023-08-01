@@ -4,6 +4,13 @@
     ViewData["Title"] = "Home ";
 }
 
+@if(TempData["msg"] != null)
+{
+        <div class="alert alert-success" role="alert">
+            @TempData["msg"]?.ToString()
+        </div>
+}
+
 @functions {
     public string GetImageUrl(string fileName)
     {

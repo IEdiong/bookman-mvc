@@ -29,7 +29,7 @@
             <li class="list-group-item">Author: <strong>@Model.Author</strong></li>
             <li class="list-group-item">Price: <strong>₦@Model.Price.ToString("N2")</strong></li>
         </ul>
-        <a class="btn btn-primary mt-3">Buy Now</a>
+        <a asp-controller="Order" asp-action="Create" asp-route-bookId="@Model.Id" class="btn btn-primary mt-3">Buy Now</a>
     </div>
 </div>
 <div class="mt-5">

@@ -1,0 +1,47 @@
+﻿@model OrderViewModel
+
+@{
+    ViewData["Title"] = "Place an order";
+
+    var book = ViewData["book"] as Book;
+}
+
+<div class="mt-5">
+    <h1>Place an order for the book "@book?.Name"</h1>
+    <div class="row align-items-start mt-5">
+        <div class="col-md-6">
+            <p>Please enter your delivery details in the form below</p>
+            <form asp-controller="Order" asp-action="Create" method="Post" role="form">
+
+                <div class="mb-3 col-md-6">
+                    <label asp-for="@Model.Address" class="form-label"></label>
+                    <input class="form-control" asp-for="@Model.Address" placeholder="No. 3 Thompson road, Dallas, USA">
+                    <span asp-validation-for="@Model.Address" class="text-danger"></span>
+                </div>
+
+                <div class="mb-3 col-md-6">
+                    <label asp-for="@Model.PhoneNumber" class="form-label">Phone Number</label>
+                    <input class="form-control" asp-for="@Model.PhoneNumber" placeholder="+236 802 789 1234">
+                    <span asp-validation-for="@Model.PhoneNumber" class="text-danger"></span>
+                </div>
+
+                <div class="mb-3 col-md-6">
+                    <label asp-for="@Model.Email" class="form-label"></label>
+                    <input type="email" class="form-control" asp-for="@Model.Email" placeholder="johndoe@email.com">
+                    <span asp-validation-for="@Model.Email" class="text-danger"></span>
+                </div>
+
+                <input type="hidden" hidden value="@book?.Id" asp-for="@Model.BookId" />
+
+                <button class="btn btn-primary" type="submit">Place Order</button>
+            </form>
+        </div>
+        <div class="col-md-6">
+            <ul class="list-group mt-3 w-100">
+                <li class="list-group-item">Year: <strong>@book?.Year</strong></li>
+                <li class="list-group-item">Author: <strong>@book?.Author</strong></li>
+                <li class="list-group-item">Price: <strong>₦@book?.Price.ToString("N2")</strong></li>
+            </ul>
+        </div>
+    </div>
+</div>

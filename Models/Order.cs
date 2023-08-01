@@ -26,7 +26,7 @@ namespace Bookman.Models
 
 		public int BookId { get; set; }
 
-		public Book Book { get; set; }
+        public Book Book { get; set; }
 
 		public string UserId { get; set; }
 
