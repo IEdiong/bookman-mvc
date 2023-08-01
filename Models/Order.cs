@@ -40,5 +40,14 @@ namespace Bookman.Models
 
         public string Email { get; set; }
 
+        public OrderStatus Status { get; set; }
+
+    }
+
+    public enum OrderStatus
+    {
+        Pending,
+        Failed,
+        Success
     }
 }

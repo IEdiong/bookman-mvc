@@ -63,6 +63,7 @@ namespace Bookman.Controllers
                         BookId = model.BookId,
                         Date = DateTime.Now,
                         Price = book.Price,
+                        Status = OrderStatus.Pending
                     };
 
                     _orderRepository.CreateOrder(order);
@@ -72,6 +73,35 @@ namespace Bookman.Controllers
             }
 
             return View();
+        }
+
+        // GET: /<controller>/Admin
+        [HttpGet]
+        public IActionResult Admin()
+        {
+            var orders = _orderRepository.GetAllOrders;
+            return View(orders);
+        }
+
+        // POST: /<controller>/
+        [HttpPost]
+        public IActionResult GrantOrder(int orderId)
+        {
+            var order = _orderRepository.GetOrder(orderId);
+
+            if (order == null)
+            {
+                return NotFound();
+            }
+            else
+            {
+                if (order.Status != OrderStatus.Success)
+                    order.Status = OrderStatus.Success;
+
+                _orderRepository.SaveOrder();
+                return RedirectToAction("Admin");
+            }
+            
         }
     }
 }
