@@ -8,7 +8,7 @@ namespace Bookman.Services
 			string extension = Path.GetExtension(fileName);
 			string fileNameWithoutExtension = Path.GetFileNameWithoutExtension(fileName);
 
-			string uniqueFileName = $"{fileNameWithoutExtension}_{Guid.NewGuid()}{extension}";
+			string uniqueFileName = $"{fileNameWithoutExtension.ToLower()}_{Guid.NewGuid()}{extension}";
 			return uniqueFileName;
 		}
 	}

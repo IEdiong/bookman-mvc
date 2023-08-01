@@ -50,10 +50,13 @@
                 
                 <div class="card-body d-flex flex-column justify-content-between">
                     <div class="card-text mb-3">
-                        <h5 class="card-title">@book.Name</h5>
+                        <h5 class="card-title fs-4">@book.Name</h5>
                         <p class="card-text">@book.Description?.Substring(0, 30)...</p>
                     </div>
-                    <a asp-controller="Home" asp-action="Details" asp-route-bookId="@book.Id" class="btn btn-primary">Preview</a>
+                    <div class="d-flex flex-column">
+                        <p class="card-text fs-5"><strong>@book.Price.ToString("N2")</strong></p>
+                        <a asp-controller="Home" asp-action="Details" asp-route-bookId="@book.Id" class="btn btn-primary">Preview</a>
+                    </div>
                 </div>
             </div>
         </div>
@@ -61,9 +64,11 @@
 </div>
 
 @section Scripts{
-    <script defer type="text/javascript">const filter = document.getElementById('filter-select');
+    <script defer type="text/javascript">
+        const filter = document.getElementById('filter-select');
         const form = document.getElementById('filter-form');
         filter.addEventListener("change", function () {
             form.submit();
-        })</script>
+        })
+    </script>
 }

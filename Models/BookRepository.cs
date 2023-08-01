@@ -13,7 +13,7 @@ namespace Bookman.Models
         {
             get
             {
-                return _context.Books.OrderBy(b => b.Date).ToList();
+                return _context.Books.OrderByDescending(b => b.Date).ToList();
             }
         }
 
@@ -29,7 +29,7 @@ namespace Bookman.Models
         {
             if (string.IsNullOrEmpty(searchString))
             {
-                return _context.Books.OrderBy(b => b.Date).ToList();
+                return _context.Books.OrderByDescending(b => b.Date).ToList();
             }
 
             searchString = searchString.Trim();
@@ -50,7 +50,7 @@ namespace Bookman.Models
             }
             else
             {
-                return _context.Books.OrderBy(b => b.Date).ToList();
+                return _context.Books.OrderByDescending(b => b.Date).ToList();
             }
         }
     }

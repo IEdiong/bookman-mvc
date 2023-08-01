@@ -47,7 +47,8 @@ namespace Bookman.Controllers
                     Year = model.Year,
                     Price = model.Price,
                     Description = model.Description,
-                    FileName = fileName
+                    FileName = fileName,
+                    Date = DateTime.Now
                 };
                 _bookRepository.CreateBook(newBook);
                 return RedirectToAction("Index", "Home");

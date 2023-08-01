@@ -23,7 +23,8 @@ public class ApplicationDbContext : IdentityDbContext
                 Author = "Vnicom Hub",
                 Description = "This book covers the basics of C#.",
                 Price = 5000,
-                Year = 2021
+                Year = 2021,
+                Date = DateTime.Now
             },
             new Book("Fuji Music")
             {
@@ -31,7 +32,8 @@ public class ApplicationDbContext : IdentityDbContext
                 Author = "Ade Ogunsanya",
                 Description = "Want to learn how to sing fuji jazz, then this book is for you.",
                 Price = 2000,
-                Year = 1998
+                Year = 1998,
+                Date = DateTime.Now.AddDays(-3)
             },
             new Book("Introduction to Backend development in C#")
             {
@@ -39,7 +41,8 @@ public class ApplicationDbContext : IdentityDbContext
                 Author = "Ediong Joseph",
                 Description = "This book helps you master the basics of backend development with the C# language.",
                 Price = 10000,
-                Year = 2023
+                Year = 2023,
+                Date = DateTime.Now.AddDays(-10)
             },
             new Book("Introduction to Frontend development with Angular")
             {
@@ -47,7 +50,8 @@ public class ApplicationDbContext : IdentityDbContext
                 Author = "Ediong Joseph",
                 Description = "This book helps you master the basics of frontend developement with Angular.",
                 Price = 10500,
-                Year = 2023
+                Year = 2023,
+                Date = DateTime.Now.AddDays(-50)
             }
         };
         modelBuilder.Entity<Book>().HasData(books);
