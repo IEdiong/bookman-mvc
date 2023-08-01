@@ -26,6 +26,13 @@ namespace Bookman.Controllers
             _userManager = userManager;
         }
 
+        // GET: /<controller>
+        [HttpGet]
+        public IActionResult Index()
+        {
+            return View();
+        }
+
         // GET: /<controller>/Create
         [HttpGet]
         public IActionResult Create(int bookId)
