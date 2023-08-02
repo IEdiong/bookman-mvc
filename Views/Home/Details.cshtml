@@ -18,20 +18,23 @@
     }
 }
 
-<div class="row align-items-center mt-5">
-    <div class="col-md-6">
-        <img src="@GetImageUrl(Model.FileName!)" class="card-img-top" alt="placeholder image">
+@if (Model != null)
+{
+    <div class="row align-items-center mt-5">
+        <div class="col-md-6">
+            <img src="@GetImageUrl(Model.FileName!)" class="card-img-top" alt="placeholder image">
+        </div>
+        <div class="col-md-6 d-flex flex-column align-items-start">
+            <h1>@Model.Name</h1>
+            <ul class="list-group mt-3 w-100">
+                <li class="list-group-item">Year: <strong>@Model.Year</strong></li>
+                <li class="list-group-item">Author: <strong>@Model.Author</strong></li>
+                <li class="list-group-item">Price: <strong>₦@Model.Price.ToString("N2")</strong></li>
+            </ul>
+            <a asp-controller="Order" asp-action="Create" asp-route-bookId="@Model.Id" class="btn btn-primary mt-3">Buy Now</a>
+        </div>
     </div>
-    <div class="col-md-6 d-flex flex-column align-items-start">
-        <h1>@Model.Name</h1>
-        <ul class="list-group mt-3 w-100">
-            <li class="list-group-item">Year: <strong>@Model.Year</strong></li>
-            <li class="list-group-item">Author: <strong>@Model.Author</strong></li>
-            <li class="list-group-item">Price: <strong>₦@Model.Price.ToString("N2")</strong></li>
-        </ul>
-        <a asp-controller="Order" asp-action="Create" asp-route-bookId="@Model.Id" class="btn btn-primary mt-3">Buy Now</a>
+    <div class="mt-5">
+        <p>@Model.Description</p>
     </div>
-</div>
-<div class="mt-5">
-    <p>@Model.Description</p>
-</div>
+}

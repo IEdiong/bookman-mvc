@@ -24,7 +24,7 @@ namespace Bookman.ViewModels
         [StringLength(500, MinimumLength = 30, ErrorMessage = "Description should be between 30 to 500 characters long")]
         public string Description { get; set; } = null!;
 
-        public IFormFile ImageFile { get; set; } = null!;
+        public IFormFile? ImageFile { get; set; } = null!;
 
     }
 }

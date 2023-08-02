@@ -55,6 +55,11 @@ namespace Bookman.Models
                 return _context.Books.OrderByDescending(b => b.Date).ToList();
             }
         }
+
+        public void SaveBook()
+        {
+            _context.SaveChanges();
+        }
     }
 }
 

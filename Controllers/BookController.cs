@@ -32,23 +32,25 @@ namespace Bookman.Controllers
         {
             if (ModelState.IsValid)
             {
-                string fileName = UtilsService.GetUniqueFileName(model.ImageFile.FileName);
-                string imagePath = Path.Combine(_hostEnvironment.WebRootPath, "imgs", fileName);
-
-                using (var stream = new FileStream(imagePath, FileMode.Create))
+                var newBook = new Book(model.Name);
+                if (model.ImageFile != null)
                 {
-                    model.ImageFile.CopyTo(stream);
+                    string fileName = UtilsService.GetUniqueFileName(model.ImageFile.FileName);
+                    string imagePath = Path.Combine(_hostEnvironment.WebRootPath, "imgs", fileName);
+
+                    using (var stream = new FileStream(imagePath, FileMode.Create))
+                    {
+                        model.ImageFile.CopyTo(stream);
+                    }
+                    newBook.FileName = fileName;
                 }
 
-                var newBook = new Book(model.Name)
-                {
-                    Author = model.Author,
-                    Year = model.Year,
-                    Price = model.Price,
-                    Description = model.Description,
-                    FileName = fileName,
-                    Date = DateTime.Now
-                };
+                newBook.Author = model.Author;
+                newBook.Year = model.Year;
+                newBook.Price = model.Price;
+                newBook.Description = model.Description;
+                newBook.Date = DateTime.Now;
+
                 _bookRepository.CreateBook(newBook);
                 return RedirectToAction("Index", "Home");
             }
