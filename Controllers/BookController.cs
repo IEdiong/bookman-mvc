@@ -1,10 +1,12 @@
 ﻿using Bookman.Models;
 using Bookman.Services;
 using Bookman.ViewModels;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Bookman.Controllers
 {
+    [Authorize(Roles = "Admin")]
     public class BookController : Controller
     {
         private readonly IBookRepository _bookRepository;

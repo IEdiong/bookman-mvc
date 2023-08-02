@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Bookman.Controllers
 {
-    [Authorize]
+    
     public class OrderController : Controller
     {
         private readonly UserManager<IdentityUser> _userManager;
@@ -76,6 +76,7 @@ namespace Bookman.Controllers
         }
 
         // GET: /<controller>/Admin
+        [Authorize(Roles = "Admin")]
         [HttpGet]
         public IActionResult Admin()
         {
@@ -84,6 +85,7 @@ namespace Bookman.Controllers
         }
 
         // POST: /<controller>/
+        [Authorize(Roles = "Admin")]
         [HttpPost]
         public IActionResult GrantOrder(int orderId)
         {

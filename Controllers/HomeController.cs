@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Bookman.Models;
 using Bookman.ViewModels;
+using Microsoft.AspNetCore.Identity;
 
 namespace Bookman.Controllers;
 
@@ -9,15 +10,25 @@ public class HomeController : Controller
 {
     private readonly ILogger<HomeController> _logger;
     private readonly IBookRepository _bookRepository;
+    private readonly UserManager<IdentityUser> _userManager;
 
-    public HomeController(ILogger<HomeController> logger, IBookRepository bookRepository)
+    public HomeController(ILogger<HomeController> logger,
+        IBookRepository bookRepository,
+        UserManager<IdentityUser> userManager)
     {
         _logger = logger;
         _bookRepository = bookRepository;
+        _userManager = userManager;
     }
 
-    public IActionResult Index()
+    public async Task<IActionResult> Index()
     {
+        var user = await _userManager.GetUserAsync(User);
+        if (user != null)
+        {
+            var isAdmin = await _userManager.IsInRoleAsync(user, "Admin");
+            var roles = await _userManager.GetRolesAsync(user);
+        }
         var books = _bookRepository.AllBooks;
         return View(books);
     }
