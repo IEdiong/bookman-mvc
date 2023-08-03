@@ -6,7 +6,7 @@
 
 <div class="mt-5">
     <h1>Edit Book</h1>
-    <form asp-controller="Home" asp-action="Edit" method="Post" role="form" enctype="multipart/form-data">
+    <form asp-controller="Book" asp-action="Edit" method="Post" role="form" enctype="multipart/form-data">
         @if (Model != null)
         {
             <input asp-for="@Model.Id" type="hidden" />

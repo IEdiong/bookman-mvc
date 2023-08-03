@@ -59,6 +59,66 @@ namespace Bookman.Controllers
                 return View();
             }
         }
+
+        [HttpGet]
+        public IActionResult Edit(int bookId)
+        {
+            var book_db = _bookRepository.GetBookById(bookId);
+            if (book_db != null)
+            {
+                var book = new BookViewModel()
+                {
+                    Id = book_db.Id,
+                    Name = book_db.Name,
+                    Author = book_db.Author!,
+                    Year = book_db.Year,
+                    Price = book_db.Price,
+                    Description = book_db.Description!
+                };
+
+                return View(book);
+            }
+
+            return NotFound();
+        }
+
+        [HttpPost]
+        public IActionResult Edit(BookViewModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                var id = model.Id;
+                var bookToEdit = _bookRepository.GetBookById(id);
+                if (bookToEdit != null)
+                {
+                    if (model.ImageFile != null)
+                    {
+                        string fileName = UtilsService.GetUniqueFileName(model.ImageFile.FileName);
+                        string imagePath = Path.Combine(_hostEnvironment.WebRootPath, "imgs", fileName);
+
+                        using (var stream = new FileStream(imagePath, FileMode.Create))
+                        {
+                            model.ImageFile.CopyTo(stream);
+                        }
+                        bookToEdit.FileName = fileName;
+                    }
+
+                    bookToEdit.Author = model.Author;
+                    bookToEdit.Year = model.Year;
+                    bookToEdit.Price = model.Price;
+                    bookToEdit.Description = model.Description;
+                    bookToEdit.Date = DateTime.Now;
+
+                    _bookRepository.SaveBook();
+                    return RedirectToAction("Details", "Home", new { bookId = id });
+                }
+                return NotFound();
+            }
+            else
+            {
+                return View(model);
+            }
+        }
     }
 }
 
