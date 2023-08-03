@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Bookman.Controllers
 {
-    
+    [Authorize]
     public class OrderController : Controller
     {
         private readonly UserManager<IdentityUser> _userManager;

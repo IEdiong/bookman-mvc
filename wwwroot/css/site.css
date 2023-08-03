@@ -16,3 +16,25 @@ html {
 body {
   margin-bottom: 60px;
 }
+
+.btn-primary {
+    background-color: #27aae1;
+    border-color: #27aae1;
+}
+
+.btn-primary:hover,
+.btn-primary:focus {
+    background-color: #2d98c5;
+}
+
+.btn-primary:focus,
+.btn:focus {
+    border-color: #2686ae;
+    box-shadow: 0 0 0 0.25rem rgba(114, 161,229,.5);
+}
+
+.form-control:focus,
+.form-select:focus {
+    border-color: #27aae1;
+    box-shadow: 0 0 0 0.25rem rgba(114, 161,229,.25);
+}
