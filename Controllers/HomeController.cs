@@ -3,9 +3,6 @@ using Microsoft.AspNetCore.Mvc;
 using Bookman.Models;
 using Bookman.ViewModels;
 using Microsoft.AspNetCore.Identity;
-using Bookman.Services;
-using Microsoft.Extensions.Hosting;
-using Microsoft.AspNetCore.Authorization;
 
 namespace Bookman.Controllers;
 
@@ -14,17 +11,14 @@ public class HomeController : Controller
     private readonly ILogger<HomeController> _logger;
     private readonly IBookRepository _bookRepository;
     private readonly UserManager<IdentityUser> _userManager;
-    private readonly IWebHostEnvironment _hostEnvironment;
 
     public HomeController(ILogger<HomeController> logger,
         IBookRepository bookRepository,
-        UserManager<IdentityUser> userManager,
-         IWebHostEnvironment hostEnvironment)
+        UserManager<IdentityUser> userManager)
     {
         _logger = logger;
         _bookRepository = bookRepository;
         _userManager = userManager;
-        _hostEnvironment = hostEnvironment;
     }
 
     public IActionResult Index()

@@ -21,7 +21,7 @@ namespace Bookman.Models
         {
             get
             {
-                return _context.Orders.Include(order => order.Book).ToList();
+                return _context.Orders.Include(order => order.Book).OrderByDescending(order => order.Date).ToList();
             }
         }
 
