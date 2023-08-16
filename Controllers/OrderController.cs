@@ -84,7 +84,7 @@ namespace Bookman.Controllers
             return View(orders);
         }
 
-        // POST: /<controller>/
+        // POST: /<controller>/Admin
         [Authorize(Roles = "Admin")]
         [HttpPost]
         public IActionResult GrantOrder(int orderId)

@@ -6,7 +6,7 @@ using Bookman.Models;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-var connectionString = builder.Configuration.GetConnectionString("BookmanContext");
+var connectionString = builder.Configuration.GetConnectionString("BookmanContextOnline");
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString)));
 

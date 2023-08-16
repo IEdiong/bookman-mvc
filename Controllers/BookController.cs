@@ -19,14 +19,14 @@ namespace Bookman.Controllers
             _hostEnvironment = hostEnvironment;
         }
 
-        // GET: /<controller>/
+        // GET: /<controller>/Create
         [HttpGet]
         public IActionResult Create()
         {
             return View();
         }
 
-        // POST: /<controller>/
+        // POST: /<controller>/Create
         [HttpPost]
         public IActionResult Create(BookViewModel model)
         {
@@ -60,6 +60,7 @@ namespace Bookman.Controllers
             }
         }
 
+        // GET: /<controller>/Edit
         [HttpGet]
         public IActionResult Edit(int bookId)
         {
@@ -82,6 +83,7 @@ namespace Bookman.Controllers
             return NotFound();
         }
 
+        // POST: /<controller>/Edit
         [HttpPost]
         public IActionResult Edit(BookViewModel model)
         {

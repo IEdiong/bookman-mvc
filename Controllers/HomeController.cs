@@ -21,6 +21,8 @@ public class HomeController : Controller
         _userManager = userManager;
     }
 
+    // GET: /<controller>/
+    [HttpGet]
     public IActionResult Index()
     {
         //var user = await _userManager.GetUserAsync(User);
@@ -33,12 +35,15 @@ public class HomeController : Controller
         return View(books);
     }
 
+    // GET: /<controller>/Details
+    [HttpGet]
     public IActionResult Details(int bookId)
     {
         var book = _bookRepository.GetBookById(bookId);
         return View(book);
     }
 
+    // GET: /<controller>/Search
     [HttpGet]
     public IActionResult Search(string searchString)
     {
@@ -46,6 +51,7 @@ public class HomeController : Controller
         return View("Index", books);
     }
 
+    // GET: /<controller>/Filter
     [HttpGet]
     public IActionResult Filter(string filter)
     {
@@ -53,6 +59,8 @@ public class HomeController : Controller
         return View("Index", books);
     }
 
+    // GET: /<controller>/Privacy
+    [HttpGet]
     public IActionResult Privacy()
     {
         return View();
