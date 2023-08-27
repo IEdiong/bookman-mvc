@@ -15,7 +15,7 @@ namespace Bookman.Models
         {
             get
             {
-                return _context.Books.OrderByDescending(b => b.Date).ToList();
+                return _context.Books.OrderByDescending(b => b.CreatedAt).ToList();
             }
         }
 
@@ -31,13 +31,13 @@ namespace Bookman.Models
         {
             if (string.IsNullOrEmpty(searchString))
             {
-                return _context.Books.OrderByDescending(b => b.Date).ToList();
+                return _context.Books.OrderByDescending(b => b.CreatedAt).ToList();
             }
 
             searchString = searchString.Trim();
             return _context.Books.Where(b => b.Name
                     .Contains(searchString))
-                    .OrderBy(b => b.Date).ToList();
+                    .OrderBy(b => b.CreatedAt).ToList();
         }
 
         public IEnumerable<Book> FilterBooksBy(string filter)
@@ -52,7 +52,7 @@ namespace Bookman.Models
             }
             else
             {
-                return _context.Books.OrderByDescending(b => b.Date).ToList();
+                return _context.Books.OrderByDescending(b => b.CreatedAt).ToList();
             }
         }
 

@@ -3,6 +3,7 @@ using System;
 using Bookman.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -10,9 +11,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Bookman.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230827131215_AddUpdateAtField")]
+    partial class AddUpdateAtField
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -61,44 +63,44 @@ namespace Bookman.Migrations
                         {
                             Id = 1,
                             Author = "Vnicom Hub",
-                            CreatedAt = new DateTime(2023, 2, 8, 14, 34, 20, 97, DateTimeKind.Local).AddTicks(9630),
+                            CreatedAt = new DateTime(2023, 2, 8, 14, 12, 14, 785, DateTimeKind.Local).AddTicks(5070),
                             Description = "This book covers the basics of C#.",
                             Name = "Basics of C# Language",
                             Price = 5000.0,
-                            UpdatedAt = new DateTime(2023, 2, 8, 14, 34, 20, 97, DateTimeKind.Local).AddTicks(9670),
+                            UpdatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Year = 2021
                         },
                         new
                         {
                             Id = 2,
                             Author = "Ade Ogunsanya",
-                            CreatedAt = new DateTime(2023, 8, 24, 14, 34, 20, 97, DateTimeKind.Local).AddTicks(9690),
+                            CreatedAt = new DateTime(2023, 8, 24, 14, 12, 14, 785, DateTimeKind.Local).AddTicks(5110),
                             Description = "Want to learn how to sing fuji jazz, then this book is for you.",
                             Name = "Fuji Music",
                             Price = 2000.0,
-                            UpdatedAt = new DateTime(2023, 8, 24, 14, 34, 20, 97, DateTimeKind.Local).AddTicks(9690),
+                            UpdatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Year = 1998
                         },
                         new
                         {
                             Id = 3,
                             Author = "Ediong Joseph",
-                            CreatedAt = new DateTime(2023, 8, 17, 14, 34, 20, 97, DateTimeKind.Local).AddTicks(9690),
+                            CreatedAt = new DateTime(2023, 8, 17, 14, 12, 14, 785, DateTimeKind.Local).AddTicks(5120),
                             Description = "This book helps you master the basics of backend development with the C# language.",
                             Name = "Introduction to Backend development in C#",
                             Price = 10000.0,
-                            UpdatedAt = new DateTime(2023, 8, 17, 14, 34, 20, 97, DateTimeKind.Local).AddTicks(9700),
+                            UpdatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Year = 2023
                         },
                         new
                         {
                             Id = 4,
                             Author = "Ediong Joseph",
-                            CreatedAt = new DateTime(2023, 7, 8, 14, 34, 20, 97, DateTimeKind.Local).AddTicks(9700),
+                            CreatedAt = new DateTime(2023, 7, 8, 14, 12, 14, 785, DateTimeKind.Local).AddTicks(5120),
                             Description = "This book helps you master the basics of frontend developement with Angular.",
                             Name = "Introduction to Frontend development with Angular",
                             Price = 10500.0,
-                            UpdatedAt = new DateTime(2023, 7, 8, 14, 34, 20, 97, DateTimeKind.Local).AddTicks(9710),
+                            UpdatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Year = 2023
                         });
                 });

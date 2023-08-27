@@ -6,9 +6,18 @@ using Bookman.Models;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-var connectionString = builder.Configuration.GetConnectionString("BookmanContextOnline");
-builder.Services.AddDbContext<ApplicationDbContext>(options =>
-    options.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString)));
+if (builder.Environment.IsDevelopment())
+{
+    var connectionString = builder.Configuration.GetConnectionString("BookmanContext");
+    builder.Services.AddDbContext<ApplicationDbContext>(options =>
+        options.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString)));
+}
+else
+{
+    var connectionString = builder.Configuration.GetConnectionString("AzureDb");
+    builder.Services.AddDbContext<ApplicationDbContext>(options =>
+        options.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString)));
+}
 
 builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 

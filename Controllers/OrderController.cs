@@ -67,7 +67,8 @@ namespace Bookman.Controllers
                     };
 
                     _orderRepository.CreateOrder(order);
-                    TempData["msg"] = $"Hi {user.Email}, your order for {book.Name} has been processed except a call from us.";
+                    TempData["msg"] = $"Hi {user.Email}, your order for " +
+                        $"{book.Name} has been processed except a call from us.";
                     return RedirectToAction("Index", "Home");
                 }
             }

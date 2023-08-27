@@ -3,6 +3,7 @@ using System;
 using Bookman.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -10,9 +11,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Bookman.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230824035029_AddAzureDb")]
+    partial class AddAzureDb
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -26,14 +28,12 @@ namespace Bookman.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("Author")
-                        .IsRequired()
                         .HasColumnType("longtext");
 
-                    b.Property<DateTime>("CreatedAt")
+                    b.Property<DateTime>("Date")
                         .HasColumnType("datetime(6)");
 
                     b.Property<string>("Description")
-                        .IsRequired()
                         .HasColumnType("longtext");
 
                     b.Property<string>("FileName")
@@ -45,9 +45,6 @@ namespace Bookman.Migrations
 
                     b.Property<double>("Price")
                         .HasColumnType("double");
-
-                    b.Property<DateTime>("UpdatedAt")
-                        .HasColumnType("datetime(6)");
 
                     b.Property<int>("Year")
                         .HasColumnType("int");
@@ -61,44 +58,40 @@ namespace Bookman.Migrations
                         {
                             Id = 1,
                             Author = "Vnicom Hub",
-                            CreatedAt = new DateTime(2023, 2, 8, 14, 34, 20, 97, DateTimeKind.Local).AddTicks(9630),
+                            Date = new DateTime(2023, 2, 5, 4, 50, 29, 328, DateTimeKind.Local).AddTicks(4850),
                             Description = "This book covers the basics of C#.",
                             Name = "Basics of C# Language",
                             Price = 5000.0,
-                            UpdatedAt = new DateTime(2023, 2, 8, 14, 34, 20, 97, DateTimeKind.Local).AddTicks(9670),
                             Year = 2021
                         },
                         new
                         {
                             Id = 2,
                             Author = "Ade Ogunsanya",
-                            CreatedAt = new DateTime(2023, 8, 24, 14, 34, 20, 97, DateTimeKind.Local).AddTicks(9690),
+                            Date = new DateTime(2023, 8, 21, 4, 50, 29, 328, DateTimeKind.Local).AddTicks(4900),
                             Description = "Want to learn how to sing fuji jazz, then this book is for you.",
                             Name = "Fuji Music",
                             Price = 2000.0,
-                            UpdatedAt = new DateTime(2023, 8, 24, 14, 34, 20, 97, DateTimeKind.Local).AddTicks(9690),
                             Year = 1998
                         },
                         new
                         {
                             Id = 3,
                             Author = "Ediong Joseph",
-                            CreatedAt = new DateTime(2023, 8, 17, 14, 34, 20, 97, DateTimeKind.Local).AddTicks(9690),
+                            Date = new DateTime(2023, 8, 14, 4, 50, 29, 328, DateTimeKind.Local).AddTicks(4920),
                             Description = "This book helps you master the basics of backend development with the C# language.",
                             Name = "Introduction to Backend development in C#",
                             Price = 10000.0,
-                            UpdatedAt = new DateTime(2023, 8, 17, 14, 34, 20, 97, DateTimeKind.Local).AddTicks(9700),
                             Year = 2023
                         },
                         new
                         {
                             Id = 4,
                             Author = "Ediong Joseph",
-                            CreatedAt = new DateTime(2023, 7, 8, 14, 34, 20, 97, DateTimeKind.Local).AddTicks(9700),
+                            Date = new DateTime(2023, 7, 5, 4, 50, 29, 328, DateTimeKind.Local).AddTicks(4920),
                             Description = "This book helps you master the basics of frontend developement with Angular.",
                             Name = "Introduction to Frontend development with Angular",
                             Price = 10500.0,
-                            UpdatedAt = new DateTime(2023, 7, 8, 14, 34, 20, 97, DateTimeKind.Local).AddTicks(9710),
                             Year = 2023
                         });
                 });

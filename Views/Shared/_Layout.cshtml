@@ -29,9 +29,6 @@
                             <li class="nav-item">
                                 <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
                             </li>
-                            <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-                            </li>
                             @if (SignInManager.IsSignedIn(User))
                             {
                                 <li class="nav-item">
@@ -66,7 +63,7 @@
                 <img src="~/imgs/logo.svg" alt="" width="120" height="40" />
             </a>
             <div>
-                &copy; 2023 - Bookman - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+                &copy; 2023 - Bookman
             </div>
         </div>
     </footer>
