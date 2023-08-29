@@ -16,9 +16,9 @@ namespace Bookman.Models
 		public string Author { get; set; } = string.Empty;
 
 		[Required]
-        public string Description { get; set; } = string.Empty;
+    public string Description { get; set; } = string.Empty;
 
-        [Required]
+    [Required]
 		public int Year { get; set; }
 
 		[Required]
